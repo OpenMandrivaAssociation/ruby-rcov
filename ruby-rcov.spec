@@ -11,7 +11,7 @@ License: GPL
 URL: http://eigenclass.org/hiki.rb?rcov
 Source0: %{rbname}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildRequires: ruby-rake
+BuildRequires: ruby-rake ruby-devel
 
 %description
 rcov is a tool for simple code coverage analysis in Ruby. It features:
