@@ -10,6 +10,7 @@ Group: Development/Ruby
 License: GPL
 URL: http://eigenclass.org/hiki.rb?rcov
 Source0: %{rbname}-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: ruby-rake ruby-devel
 
 %description
