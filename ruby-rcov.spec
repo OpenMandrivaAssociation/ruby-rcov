@@ -1,6 +1,6 @@
 %define rbname rcov
 %define version 0.8.0.2
-%define release %mkrel 1
+%define release %mkrel 3
 
 Summary: Code coverage for Ruby
 Name: ruby-%{rbname}
