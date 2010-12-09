@@ -1,6 +1,6 @@
 %define rbname rcov
 %define version 0.8.0.2
-%define release %mkrel 4
+%define release %mkrel 5
 
 Summary: Code coverage for Ruby
 Name: ruby-%{rbname}
@@ -12,6 +12,7 @@ URL: http://eigenclass.org/hiki.rb?rcov
 Source0: %{rbname}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: ruby-rake ruby-devel
+Provides:   rubygem(%{rbname})
 
 %description
 rcov is a tool for simple code coverage analysis in Ruby. It features:
