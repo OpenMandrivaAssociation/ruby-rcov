@@ -1,18 +1,17 @@
 %define rbname rcov
-%define version 0.8.0.2
-%define release %mkrel 5
+%define version 0.9.9
+%define release %mkrel 1
 
 Summary: Code coverage for Ruby
 Name: ruby-%{rbname}
 Version: %{version}
 Release: %{release}
 Group: Development/Ruby
-License: GPL
-URL: http://eigenclass.org/hiki.rb?rcov
-Source0: %{rbname}-%{version}.tar.bz2
+License: GPLv2+ or Ruby License
+URL: http://github.com/relevance/rcov
+Source0: http://rubygems.org/downloads/%{rbname}-%{version}.gem
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: ruby-rake ruby-devel
-Provides:   rubygem(%{rbname})
 
 %description
 rcov is a tool for simple code coverage analysis in Ruby. It features:
@@ -30,24 +29,25 @@ nothing) but it's still useful for testing: it will at least tell you when your
 tests need more work, and most importantly where.
 
 %prep
-%setup -q -n %{rbname}-%{version}
+%setup -q
+tar xmf data.tar.gz
 
 %build
-ruby setup.rb config 
-ruby setup.rb setup
-RUBYLIB=$PWD/ext/rcovrt/ rake
+%gem_build
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-ruby setup.rb install --prefix=%{buildroot}
-chmod 0755 %{buildroot}%{ruby_sitearchdir}/rcovrt.so
+%gem_install
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{ruby_sitearchdir}/rcovrt.so
-%{ruby_sitelibdir}/rcov*
 %{_bindir}/rcov
-%doc THANKS README.* LICENSE LEGAL CHANGES test/
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/
+%{ruby_gemdir}/gems/%{rbname}-%{version}/bin/
+%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/
+%doc %{ruby_gemdir}/doc/%{rbname}-%{version}
+%{ruby_gemdir}/specifications/%{rbname}-%{version}.gemspec
+%{ruby_sitearchdir}/rcovrt.so
