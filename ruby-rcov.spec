@@ -8,7 +8,7 @@ Version: %{version}
 Release: %{release}
 Group: Development/Ruby
 License: GPLv2+ or Ruby License
-URL: http://github.com/relevance/rcov
+URL: https://github.com/relevance/rcov
 Source0: http://rubygems.org/downloads/%{rbname}-%{version}.gem
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: ruby-rake ruby-devel
